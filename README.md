@@ -7,7 +7,6 @@
 # test7
 # test8
 # test9
-# test0
 
 # Getting Started with Create React App
 
