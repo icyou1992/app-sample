@@ -12,6 +12,7 @@ RUN npm install --silent
 
 # 소스를 작업폴더로 복사하고 빌드
 COPY . /usr/src/app
+RUN ls /usr/src/app
 RUN npm run build
 
 FROM docker.io/library/nginx:stable@sha256:ddc6833af9956fa725c608dbc73a1dd73f0b82d994022e744bacfa113119b910
@@ -27,4 +28,4 @@ COPY --from=builder /usr/src/app/build /usr/share/nginx/html
 
 # 80포트 오픈하고 nginx를 백그라운드로 실행
 EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["nginx", "-g", "daemon off;", "ps", "-ef", "|", "grep", "nginx"]
