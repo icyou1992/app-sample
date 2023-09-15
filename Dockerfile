@@ -21,7 +21,7 @@ FROM docker.io/library/nginx:stable
 # 소스 코드에 /conf/conf.d 파일이 있어야함
 RUN rm -rf /etc/nginx/
 RUN mkdir /etc/nginx/
-COPY nginx/* /etc/nginx/*
+COPY nginx/ /etc/nginx/
 RUN ls /etc/nginx/
 
 # 위에서 생성한 앱의 빌드산출물을 nginx의 샘플 앱이 사용하던 폴더로 이동
