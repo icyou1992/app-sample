@@ -15,13 +15,13 @@ COPY . /usr/src/app
 RUN ls /usr/src/app
 RUN npm run build
 
-FROM docker.io/library/nginx:stable@sha256:ddc6833af9956fa725c608dbc73a1dd73f0b82d994022e744bacfa113119b910
+FROM docker.io/library/nginx:stable
 
 # nginx의 기본 설정을 삭제하고 앱 소스에서 설정한 파일을 복사
 # 소스 코드에 /conf/conf.d 파일이 있어야함
 RUN rm -rf /etc/nginx/conf.d
 RUN mkdir /etc/nginx/conf.d/
-COPY nginx/conf.d /etc/nginx/conf.d/nginx.conf
+COPY nginx/conf.d /etc/nginx/conf.d/default.conf
 RUN ls /etc/nginx/conf.d/
 
 # 위에서 생성한 앱의 빌드산출물을 nginx의 샘플 앱이 사용하던 폴더로 이동
