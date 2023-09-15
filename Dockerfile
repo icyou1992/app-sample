@@ -22,6 +22,7 @@ FROM docker.io/library/nginx:stable@sha256:ddc6833af9956fa725c608dbc73a1dd73f0b8
 RUN rm -rf /etc/nginx/conf.d
 RUN mkdir /etc/nginx/conf.d/
 COPY nginx/conf.d /etc/nginx/conf.d/nginx.conf
+RUN ls /etc/nginx/conf.d/
 
 # 위에서 생성한 앱의 빌드산출물을 nginx의 샘플 앱이 사용하던 폴더로 이동
 COPY --from=builder /usr/src/app/build /usr/share/nginx/html
