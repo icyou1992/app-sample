@@ -8,7 +8,7 @@ COPY package*.json /usr/src/app/
 RUN ls ./
 RUN ls /usr/src/app
 RUN npm install --silent
-RUN npm install react-scripts@3.4.1 -g --silent
+# RUN npm install react-scripts@3.4.1 -g --silent
 
 # 소스를 작업폴더로 복사하고 빌드
 COPY . /usr/src/app
