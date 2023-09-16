@@ -4,15 +4,14 @@ FROM node:14.15.0 as builder
 RUN mkdir /usr/src/app
 WORKDIR /usr/src/app
 ENV PATH /usr/src/app/node_modules/.bin:$PATH
-COPY package.json /usr/src/app/package.json
+COPY package*.json /usr/src/app/
 RUN ls ./
 RUN ls /usr/src/app
 RUN npm install --silent
-#RUN npm install react-scripts@3.4.1 -g --silent
+RUN npm install react-scripts@3.4.1 -g --silent
 
 # 소스를 작업폴더로 복사하고 빌드
 COPY . /usr/src/app
-RUN ls /usr/src/app
 RUN npm run build
 
 FROM docker.io/library/nginx:stable
